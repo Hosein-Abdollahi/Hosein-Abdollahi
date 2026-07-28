@@ -2,6 +2,8 @@
 
 <img src="assets/banner.svg" alt="Hosein Abdollahi" width="100%">
 
+<sub><b>Final-year B.Sc. Computer Science</b> &nbsp;†&nbsp; ranked 1st of cohort &nbsp;†&nbsp; applying for graduate study in ML security &amp; reliability<br><i>Three complete studies below. Every number links to the repository that produced it.</i></sub>
+
 </div>
 
 <img src="assets/s_character.svg" width="100%">
@@ -54,6 +56,8 @@
 ```
 <sub>▸ <a href="https://github.com/Hosein-Abdollahi/inverse-scaling-in-code">inverse-scaling-in-code</a></sub>
 
+<div align="center"><img src="assets/divider.svg" width="62%"></div>
+
 ```
 ╔═══ QUEST II ═════════════════════════════════════════════════════════════╗
 ║  II. LLM SECURITY GATEWAY                        [ COMPLETE ]            ║
@@ -72,6 +76,8 @@
 ```
 <sub>▸ <a href="https://github.com/Hosein-Abdollahi/provenance-gateway">provenance-gateway</a> | <a href="https://github.com/Hosein-Abdollahi/mcp-injection-guard">mcp-injection-guard</a></sub>
 
+<div align="center"><img src="assets/divider.svg" width="62%"></div>
+
 ```
 ╔═══ QUEST III ════════════════════════════════════════════════════════════╗
 ║  III. ATTENTION HEAD PRUNING                     [ COMPLETE ]            ║
@@ -88,6 +94,8 @@
 ╚══════════════════════════════════════════════════════════════════════════╝
 ```
 <sub>▸ <a href="https://github.com/Hosein-Abdollahi/head-pruning">head-pruning</a></sub>
+
+<div align="center"><img src="assets/divider.svg" width="62%"></div>
 
 ```
 ╔═══ ACTIVE QUESTS ════════════════════════════════════════════════════════╗
