@@ -167,6 +167,13 @@
 
 <div align="center">
 
+<p align="center">
+  <img src="./dragon.svg" alt="contribution grimoire" />
+</p>
+<p align="center">
+  <img src="./dashboard.svg" alt="the ledger" />
+</p>
+
 <sub>
 <a href="mailto:H.abdollahi2005@gmail.com">H.abdollahi2005@gmail.com</a> &nbsp;†&nbsp; <a href="https://hosein-abdollahi.github.io">hosein-abdollahi.github.io</a> &nbsp;†&nbsp; <a href="https://www.linkedin.com/in/hosein-abdollahi-b97031422/">LinkedIn</a>
 </sub>
