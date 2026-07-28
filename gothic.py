@@ -215,48 +215,74 @@ def frame(w, h, title):
 # D dark outline   R body   L cream highlight   . transparent
 
 HEAD = [
-    "..L...L..",
-    "..LD.DL..",
-    ".DDRRRDD.",
-    "DRRRRRRRD",
-    "DRRRRLRRD",
-    "DRRRRRRRD",
-    ".DRRRRRRD",
-    "..DLLLLD.",
-    "...DDDD..",
+    "....L...L........",
+    "...LL...LL.......",
+    "...LLDDDLL.......",
+    "..DDDRRRDDD......",
+    ".DDRRRRRRRRDD....",
+    "DDRRRREERRRRRDD..",
+    "DRRRRREERRRRRRRD.",
+    "DRSRRRRRRRRRRRRRD",
+    ".DSRRRRRRRRRRRRD.",
+    "..DDLLLLLLLLLDD..",
+    "...DDDDDDDDDDD...",
 ]
 
-WING = [
-    ".DDDD..",
-    "DRRRRD.",
-    "DRRRRRD",
-    ".DRRRRD",
-    "..DRRD.",
-    "...DD..",
-    "...D...",
+WING_UP = [
+    "....D........",
+    "...DRD.......",
+    "..DRRRD......",
+    "..DRSRRD.....",
+    ".DRRSRRD.....",
+    ".DRRSRRRD....",
+    "DRRSRRRRD....",
+    "DRRSRRRRRD...",
+    "DRSRRRRRRD...",
+    ".DRRRRRRRRD..",
+    "..DRRRRRRRD..",
+    "...DRDRDRD...",
+    "....D.D.D....",
+]
+
+WING_DN = [
+    ".............",
+    ".............",
+    "....DDDD.....",
+    "..DDRRRRDD...",
+    ".DRRSRRRRRD..",
+    "DRRSRRRRRRRD.",
+    "DRSRRRRRRRRD.",
+    ".DRRRRRRRRRD.",
+    "..DRRRRRRRD..",
+    "...DRDRDRD...",
+    "....D.D.D....",
 ]
 
 BODY = [
-    "..DDD..",
-    ".DRRRD.",
-    "DRRLRRD",
-    "DRLRRLD",
-    "DRRRRRD",
-    ".DRRRD.",
-    "..DDD..",
+    "....D....",
+    "...DRD...",
+    "..DRRRD..",
+    ".DRRSRRD.",
+    "DRRSRRSRD",
+    "DRRRRRRRD",
+    ".DRRRRRD.",
+    "..DDDDD..",
 ]
 
 TAIL = [
-    "..DDD..",
-    ".DRRRD.",
-    ".DRRRD.",
-    "..DRD..",
-    "..DRD..",
-    "...DD..",
-    "....D..",
+    "..DDDDD..",
+    ".DRRRRRD.",
+    ".DRRSRRD.",
+    "..DRRRD..",
+    "..DRRD...",
+    "...DRD...",
+    "...DRD...",
+    "....DD...",
+    "....D....",
 ]
 
-SPRITE_COLORS = {"D": DRAGON_D, "R": DRAGON, "L": CREAM}
+SPRITE_COLORS = {"D": DRAGON_D, "R": DRAGON, "L": CREAM,
+                 "S": "#4a1f22", "E": CREAM_HI}
 
 
 def sprite(rows, scale):
@@ -300,16 +326,18 @@ def build_dragon_svg(weeks, total):
 
     ceiling = max((c for wk in weeks for _, c, _ in wk), default=1)
 
-    # serpentine path over every cell, alternating direction per column
+    # row-wise serpentine: long horizontal glides suit a winged serpent
     path = []
-    for ci in range(cols):
-        rows = range(7) if ci % 2 == 0 else range(6, -1, -1)
-        for ri in rows:
+    for ri in range(7):
+        order = range(cols) if ri % 2 == 0 else range(cols - 1, -1, -1)
+        for ci in order:
             path.append((ci, ri))
 
-    step = 0.055                       # seconds per cell
+    step = 0.078                       # seconds per cell
     travel = len(path) * step
-    cycle = travel + 3.0               # pause before the loop restarts
+    regrow_lead = 0.20                 # beat before the grid re-ignites
+    regrow_span = 1.80                 # the re-ignition sweeps back across
+    cycle = travel + regrow_lead + regrow_span + 0.25
 
     index = {pos: i for i, pos in enumerate(path)}
 
@@ -325,11 +353,14 @@ def build_dragon_svg(weeks, total):
     ]
     # one keyframe block per quantised eat time
     for b in range(BUCKETS):
-        t = (b + 0.5) / BUCKETS * travel
-        p1 = t / cycle * 100.0
-        p2 = min(99.0, p1 + 0.45)
-        css.append("@keyframes e%d{0%%,%.2f%%{opacity:1}%.2f%%,99%%{opacity:0}"
-                   "100%%{opacity:1}}" % (b, p1, p2))
+        t_eat = (b + 0.5) / BUCKETS * travel
+        t_re = travel + regrow_lead + (b / BUCKETS) * regrow_span
+        p1 = t_eat / cycle * 100.0
+        p2 = min(p1 + 0.35, 99.0)
+        p3 = max(p2 + 0.1, t_re / cycle * 100.0)
+        p4 = min(p3 + 0.45, 99.8)
+        css.append("@keyframes e%d{0%%,%.2f%%{opacity:1}%.2f%%,%.2f%%{opacity:0}"
+                   "%.2f%%,100%%{opacity:1}}" % (b, p1, p2, p3, p4))
         css.append(".e%d{animation:wake .5s ease-out backwards,"
                    "e%d %.2fs linear infinite}" % (b, b, cycle))
 
@@ -339,23 +370,53 @@ def build_dragon_svg(weeks, total):
         pct = (i * step) / cycle * 100.0
         x = pad_l + ci * PITCH + CELL / 2.0
         y = pad_t + ri * PITCH + CELL / 2.0
-        marks.append("%.3f%%{transform:translate(%.1fpx,%.1fpx)}" % (pct, x, y))
+        face = 1 if ri % 2 == 0 else -1
+        marks.append("%.3f%%{transform:translate(%.1fpx,%.1fpx) scaleX(%d)}"
+                     % (pct, x, y, face))
     end_x = pad_l + grid_w + 30
     end_y = pad_t + grid_h / 2.0
-    marks.append("%.3f%%,100%%{transform:translate(%.1fpx,%.1fpx)}"
-                 % (travel / cycle * 100.0, end_x, end_y))
+    last_face = 1 if (7 - 1) % 2 == 0 else -1
+    t_exit = travel / cycle * 100.0
+    marks.append("%.3f%%{transform:translate(%.1fpx,%.1fpx) scaleX(%d)}"
+                 % (t_exit, end_x if last_face > 0 else pad_l - 30, end_y, last_face))
+    marks.append("%.3f%%{transform:translate(%.1fpx,%.1fpx) scaleX(%d)}"
+                 % (min(99.0, t_exit + 2.0),
+                    w + 90 if last_face > 0 else -90.0, end_y, last_face))
+    marks.append("%.3f%%,100%%{transform:translate(%.1fpx,%.1fpx) scaleX(1)}"
+                 % (min(99.5, (cycle - 0.18) / cycle * 100.0), -90.0, end_y))
     css.append("@keyframes march{%s}" % "".join(marks))
     css.append(".seg{animation:march %.2fs steps(1,end) infinite}" % cycle)
-    css.append("@keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}")
-    css.append(".wing{animation:flap .34s ease-in-out infinite;transform-origin:center}")
+    css.append("@keyframes fA{0%,49.9%{opacity:1}50%,100%{opacity:0}}")
+    css.append("@keyframes fB{0%,49.9%{opacity:0}50%,100%{opacity:1}}")
+    css.append(".wu{animation:fA .58s steps(1,end) infinite}")
+    css.append(".wd{animation:fB .58s steps(1,end) infinite}")
+    css.append("@keyframes ember{0%,100%{opacity:.55}50%{opacity:1}}")
+    css.append(".eye{animation:ember 1.5s ease-in-out infinite}")
 
     out.append("<style>%s</style>" % "".join(css))
     out.append(frame(w, h, "CONTRIBUTION  GRIMOIRE"))
 
     # sprites live in defs so each segment is a cheap <use>
     out.append("<defs>")
-    out.append('<g id="dh">%s</g>' % sprite(HEAD, 3))
-    out.append('<g id="dw">%s</g>' % sprite(WING, 3))
+    out.append('<filter id="eyeglow" x="-300%" y="-300%" width="700%" height="700%">'
+               '<feGaussianBlur stdDeviation="3.2"/></filter>')
+    # eye sits at sprite cols 6-7, rows 5-6 of a 17x11 grid at scale 3
+    eye_x = -17 * 3 / 2.0 + 7 * 3
+    eye_y = -11 * 3 / 2.0 + 6 * 3
+    head_parts = [
+        '<g transform="translate(-29,-19)">',
+        '<g class="wu">%s</g>' % sprite(WING_UP, 3),
+        '<g class="wd">%s</g>' % sprite(WING_DN, 3),
+        "</g>",
+        sprite(HEAD, 3),
+        '<circle class="eye" cx="%.1f" cy="%.1f" r="7" fill="%s" '
+        'filter="url(#eyeglow)"/>' % (eye_x, eye_y, "#ffd98a"),
+        '<circle class="eye" cx="%.1f" cy="%.1f" r="3.4" fill="%s" '
+        'filter="url(#eyeglow)"/>' % (eye_x, eye_y, "#fff3d0"),
+        '<rect x="%.1f" y="%.1f" width="5" height="5" fill="#fffaf0"/>'
+        % (eye_x - 2.5, eye_y - 2.5),
+    ]
+    out.append('<g id="dh">%s</g>' % "".join(head_parts))
     out.append('<g id="db">%s</g>' % sprite(BODY, 3))
     out.append('<g id="dt">%s</g>' % sprite(TAIL, 3))
     out.append("</defs>")
@@ -393,12 +454,11 @@ def build_dragon_svg(weeks, total):
                        % (bucket, x, y, CELL, CELL, RAMP[lv], delay, date, count))
 
     # dragon: tail first so the head overlaps it
-    segs = [("dt", 5), ("db", 4), ("db", 3), ("db", 2), ("dw", 1), ("dh", 0)]
+    segs = [("dt", 7), ("db", 6), ("db", 5), ("db", 4),
+            ("db", 3), ("db", 2), ("db", 1), ("dh", 0)]
     for ref, lag in segs:
-        inner = '<g class="wing"><use href="#%s"/></g>' % ref if ref == "dw" \
-                else '<use href="#%s"/>' % ref
-        out.append('<g class="seg" style="animation-delay:%.3fs">%s</g>'
-                   % (lag * step, inner))
+        out.append('<g class="seg" style="animation-delay:%.3fs"><use href="#%s"/></g>'
+                   % (lag * step, ref))
 
     # footer readout
     base = pad_t + grid_h + 30
