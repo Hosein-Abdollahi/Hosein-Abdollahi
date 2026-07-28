@@ -419,7 +419,7 @@ def build_dragon_svg(weeks, total):
 # ---------------------------------------------------------------- dashboard ---
 
 def build_dashboard_svg(stats, weeks, cur_streak, max_streak, total, punch):
-    w, h = 860, 560
+    w, h = 860, 548
     out = ['<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" '
            'viewBox="0 0 %d %d" font-family=%s>' % (w, h, w, h, su.quoteattr(SERIF))]
 
@@ -480,10 +480,17 @@ def build_dashboard_svg(stats, weeks, cur_streak, max_streak, total, punch):
                    % (lx, y + 6, max(4, 300 * frac), RAMP[3 - min(3, i)], 0.5 + i * 0.12))
 
     # ---- activity line ------------------------------------------------------
-    ax, ay, aw, ah = 46, 268, w - 92, 118
-    out.append('<text class="h" x="%d" y="%d">THE  TIDE</text>' % (ax, ay - 12))
+    ax, ay, aw, ah = 46, 256, w - 92, 104
+    out.append('<text class="h" x="%d" y="%d">THE  TIDE</text>' % (ax, ay - 14))
     series = [sum(c for _, c, _ in wk) for wk in weeks]
     peak = max(series) or 1
+    out.append('<text class="s" x="%d" y="%d" text-anchor="end">peak %d / week</text>'
+               % (w - 52, ay - 14, peak))
+    for f in (0.5, 1.0):
+        gy = ay + ah - f * ah
+        out.append('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="%s" '
+                   'stroke-width="1" opacity=".28" stroke-dasharray="3 5"/>'
+                   % (ax, gy, ax + aw, gy, IRON))
     pts = []
     for i, v in enumerate(series):
         px = ax + (i / max(1, len(series) - 1)) * aw
@@ -496,11 +503,9 @@ def build_dashboard_svg(stats, weeks, cur_streak, max_streak, total, punch):
                'stroke-width="2.5" stroke-linejoin="round"/>' % (line, DRAGON))
     out.append('<line x1="%d" y1="%.0f" x2="%d" y2="%.0f" stroke="%s" stroke-width="1" '
                'opacity=".45"/>' % (ax, ay + ah, ax + aw, ay + ah, DRAGON_D))
-    out.append('<text class="s" x="%d" y="%.0f">peak %d / week</text>'
-               % (ax, ay - 12, peak))
 
     # ---- punch card ---------------------------------------------------------
-    px0, py0 = 46, 430
+    px0, py0 = 46, 404
     out.append('<text class="h" x="%d" y="%d">THE  WITCHING  HOURS</text>' % (px0, py0 - 12))
     cw, chh, cg = 28, 13, 2
     busiest = max(punch.values()) if punch else 1
