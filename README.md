@@ -179,7 +179,7 @@
   <img src="./dragon.svg" alt="contribution grimoire" />
 </p>
 <p align="center">
-  <img src="./dashboard.svg" alt="the ledger" />
+  <img src="./dashboard.sv" alt="the ledger" />
 </p>
 
 </div>
