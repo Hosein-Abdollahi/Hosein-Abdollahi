@@ -408,6 +408,7 @@
 <rect class="cell e20" x="820.0" y="104.0" width="12" height="12" rx="2" fill="#cd6063" style="animation-delay:0.65s,0s"><title>2026-07-28: 28</title></rect>
 <rect x="820.0" y="119.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect class="cell e20" x="820.0" y="119.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.65s,0s"><title>2026-07-29: 2</title></rect>
+<rect x="820.0" y="134.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <g class="seg" style="animation-delay:0.546s"><use href="#dt"/></g>
 <g class="seg" style="animation-delay:0.468s"><use href="#db"/></g>
 <g class="seg" style="animation-delay:0.390s"><use href="#db"/></g>
