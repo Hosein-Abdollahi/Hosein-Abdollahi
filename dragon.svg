@@ -407,6 +407,7 @@
 <rect x="820.0" y="74.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="820.0" y="89.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="820.0" y="104.0" width="12" height="12" rx="2" fill="#2c1d16"/>
+<rect x="820.0" y="119.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <g class="seg" style="animation-delay:0.546s"><use href="#dt"/></g>
 <g class="seg" style="animation-delay:0.468s"><use href="#db"/></g>
 <g class="seg" style="animation-delay:0.390s"><use href="#db"/></g>
