@@ -365,23 +365,25 @@
 <rect x="745.0" y="149.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="745.0" y="164.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="760.0" y="74.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e6" x="760.0" y="74.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.48s,0s"><title>2026-07-05: 4</title></rect>
+<rect class="cell e6" x="760.0" y="74.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.48s,0s"><title>2026-07-05: 5</title></rect>
 <rect x="760.0" y="89.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e7" x="760.0" y="89.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.49s,0s"><title>2026-07-06: 2</title></rect>
+<rect class="cell e7" x="760.0" y="89.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.49s,0s"><title>2026-07-06: 1</title></rect>
 <rect x="760.0" y="104.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="760.0" y="119.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="760.0" y="134.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="760.0" y="149.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="760.0" y="164.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="775.0" y="74.0" width="12" height="12" rx="2" fill="#2c1d16"/>
+<rect class="cell e6" x="775.0" y="74.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.48s,0s"><title>2026-07-12: 1</title></rect>
 <rect x="775.0" y="89.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e7" x="775.0" y="89.0" width="12" height="12" rx="2" fill="#7a3338" style="animation-delay:0.49s,0s"><title>2026-07-13: 9</title></rect>
+<rect class="cell e7" x="775.0" y="89.0" width="12" height="12" rx="2" fill="#7a3338" style="animation-delay:0.49s,0s"><title>2026-07-13: 8</title></rect>
 <rect x="775.0" y="104.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="775.0" y="119.0" width="12" height="12" rx="2" fill="#2c1d16"/>
+<rect class="cell e20" x="775.0" y="119.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.66s,0s"><title>2026-07-15: 2</title></rect>
 <rect x="775.0" y="134.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e33" x="775.0" y="134.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.82s,0s"><title>2026-07-16: 6</title></rect>
+<rect class="cell e33" x="775.0" y="134.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.82s,0s"><title>2026-07-16: 5</title></rect>
 <rect x="775.0" y="149.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e34" x="775.0" y="149.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.83s,0s"><title>2026-07-17: 3</title></rect>
+<rect class="cell e34" x="775.0" y="149.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.83s,0s"><title>2026-07-17: 2</title></rect>
 <rect x="775.0" y="164.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect class="cell e47" x="775.0" y="164.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.99s,0s"><title>2026-07-18: 1</title></rect>
 <rect x="790.0" y="74.0" width="12" height="12" rx="2" fill="#2c1d16"/>
@@ -394,11 +396,13 @@
 <rect x="790.0" y="134.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="790.0" y="149.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="790.0" y="164.0" width="12" height="12" rx="2" fill="#2c1d16"/>
+<rect class="cell e47" x="790.0" y="164.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.99s,0s"><title>2026-07-25: 1</title></rect>
 <rect x="805.0" y="74.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e6" x="805.0" y="74.0" width="12" height="12" rx="2" fill="#7a3338" style="animation-delay:0.48s,0s"><title>2026-07-26: 11</title></rect>
+<rect class="cell e6" x="805.0" y="74.0" width="12" height="12" rx="2" fill="#7a3338" style="animation-delay:0.48s,0s"><title>2026-07-26: 10</title></rect>
 <rect x="805.0" y="89.0" width="12" height="12" rx="2" fill="#2c1d16"/>
+<rect class="cell e6" x="805.0" y="89.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.49s,0s"><title>2026-07-27: 1</title></rect>
 <rect x="805.0" y="104.0" width="12" height="12" rx="2" fill="#2c1d16"/>
-<rect class="cell e20" x="805.0" y="104.0" width="12" height="12" rx="2" fill="#cd6063" style="animation-delay:0.65s,0s"><title>2026-07-28: 28</title></rect>
+<rect class="cell e20" x="805.0" y="104.0" width="12" height="12" rx="2" fill="#cd6063" style="animation-delay:0.65s,0s"><title>2026-07-28: 27</title></rect>
 <rect x="805.0" y="119.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect class="cell e20" x="805.0" y="119.0" width="12" height="12" rx="2" fill="#4a1f22" style="animation-delay:0.66s,0s"><title>2026-07-29: 2</title></rect>
 <rect x="805.0" y="134.0" width="12" height="12" rx="2" fill="#2c1d16"/>
@@ -408,6 +412,7 @@
 <rect x="820.0" y="89.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="820.0" y="104.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <rect x="820.0" y="119.0" width="12" height="12" rx="2" fill="#2c1d16"/>
+<rect x="820.0" y="134.0" width="12" height="12" rx="2" fill="#2c1d16"/>
 <g class="seg" style="animation-delay:0.546s"><use href="#dt"/></g>
 <g class="seg" style="animation-delay:0.468s"><use href="#db"/></g>
 <g class="seg" style="animation-delay:0.390s"><use href="#db"/></g>
